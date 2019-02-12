@@ -52,14 +52,13 @@ def main():
 		except IPChangedException as e:
 			if latest_ip is None:
 				print("\ninitial ip is %s" % (e.new_ip))
-				sms.alert("new ip for %s: %s" % (config.hostname, e.new_ip))
+			sms.alert("new ip for %s: %s" % (config.hostname, e.new_ip))
 
 			latest_ip = e.new_ip
 		except dns.exception.DNSException as e:
 			ulog(sys.stderr, "D")
 		except Exception as e:
 			ulog(sys.stderr, "E")
-
 			if hasattr(e, "errno") and type(e.errno) is int:
 				ulog(sys.stderr, "%i" % (e.errno))
 

@@ -42,8 +42,8 @@ def ip(domain, nameserver_ip="8.8.8.8"):
 
 	ip_address = None
 	for answer in query_answers:
-		ipv4_records = \
-				filter(lambda r: r.rdtype == dns.rdatatype.A, answer.items)
+		ipv4_records = list(filter(
+			lambda r: r.rdtype == dns.rdatatype.A, answer.items))
 
 		if len(ipv4_records):
 			ip_address = ipv4_records[0].address
