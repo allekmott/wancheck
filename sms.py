@@ -13,8 +13,8 @@ def twilio_send(body, to=config.phone_target, from_=config.phone_source):
 
 	return message
 
-def alert(message, phone_target=config.phone_target): pass
-	#twilio_send(message, to=phone_target)
+def alert(message, phone_target=config.phone_target):
+	twilio_send(message, to=phone_target)
 
 if __name__ == "__main__":
 	alert("test")
